@@ -1,0 +1,116 @@
+<!--Traversing elements -
+how to get parent element, how to get child elemtn, how to get siblings of the eleemnts
+* to get the parent node of a specified node in the DOM tree, we can use the parentNode property
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div class="title">
+      <p class="text"> Welcome to greatstack</p>
+    </div>
+
+    <div class="title2">
+      <p> Welcome to greatstack 1</p>
+      <p class="second"> Welcome to greatstack 2</p>
+      <p> Welcome to greatstack 3</p>
+      <p> Welcome to greatstack 4</p>
+    </div>
+    
+    <ul id="menu">
+      <li>Home</li>
+      <li>About</li>
+      <li>BLog</li>
+      <li style="display: none;">Project</li>
+    </ul>
+
+    <script>
+      let txt = document.querySelector(".text");
+      console.log(txt.parentNode);
+
+      let parent = document.querySelector(".title2");
+      console.log(parent.firstChild);
+      console.log(parent.firstElementChild);
+      console.log(parent.lastElementChild);
+      console.log(parent.childNodes);
+
+      /* select next siblings, previous siblings of an element*/
+      let second = document.querySelector("second");
+      console.log(second.previousElementSibling);
+      console.log(second.nextElementSibling);
+
+      /*Manupulate HTML element*/
+      //to create an html element we use createElement()
+      //the document.createEelment() accepts an HTML tag name and returns a new node with the element type
+      let div = document.createElement("div"); //create element
+      div.innerHTML = "<p> Welecome </p>";  //add content
+      div.className = "title"; //add class
+      document.body.appendChild(div); //add to our html document
+
+      console.log(div);
+
+      /* use appendChild() method to add a node to the end of the list of child nodes of a specific parent node
+      appendChild() can be used to move an existing child node to the new position within the document
+      */
+      let menu = document.getElementById("menu");
+      let list = document.createElement("li");
+      list.innerHTML = "Contact";
+
+      menu.appendChild(list);
+
+      /*
+      textContent - to get the text content of a node and its desendants. we use the textContent propertey.
+      */
+      console.log(menu.textContent); //all html elements without checking css
+      console.log(menu.innerText); //only visible element by following css
+
+      menu.textContent = "<h1> Hellol </h1>"; //remove all list and add this hello content but this is add as plain text;
+      
+      menu.innerHTML = "<h1> Hellol </h1>"; //add as a html content
+
+      /*after() - we can use after() to inser one or more nodes after the element*/
+      //first create new element using createElement() and then add using after()
+      menu.after(node, node2 );
+      menu.after(str1, str2, ...str3); //can add multiple strings
+
+      /*append()
+      differnce between appen() and appendChild() = append() can add multiple nodes and strings but appenChilad() can add single element
+      */
+      parentNode.append(newNode); //add new node or nodes as the last child in that parent
+
+
+      /*prepend()
+      */
+      parentNode.prepend(newNode); //add new node as the first child in the parent node
+
+      /*insertAdjacentHTML() 
+      */
+      element.insertAdjacentHTML(positionName, text); //positionName = beforebegin | afterbegin | beforeend | afterend
+      menu.insertAdjacentElement("beforeend", "<li>Career</li>")
+
+      /*replaceChild()
+      */
+      parentNode.replaceChild(newChild, oldChild);
+
+      /*cloneNode()
+      */
+      let newNode = orginalNode.cloneNode(); //copy of the exisiting node
+      let  copyMenu = menu.cloneNode(); // one copy of the menu element
+      let  copyMenu2 = menu.cloneNode(true); //copy element including all its child elements
+
+      /*removeChild()
+      */
+      parentNode.removeChild(childNode);
+      menu.removeChild(menu.lastElementChild);
+
+
+      /*insertBefore()
+      use insertBefore() method to insert a new node before an existing node as a child node of a parent node.
+      */
+      parentNode.insertBefore(newNode, exisitingNode);
+      menu.insertBefore(newNode,menu.firstElementChild)
+    </script>
+  </body>
+</html>

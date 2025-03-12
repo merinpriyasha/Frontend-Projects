@@ -1,0 +1,58 @@
+<!--Event models : 
+Event bubbling - 
+event start at the most specific element(from button) and flows towards least specific element(DOCTYPE html)
+
+Event Capturing -
+event starts at the least specofoc element and flows toward the most specific element.
+
+an event handler is a piece of code that will be executed when the event occurs
+-->
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="container">
+      <button type="button" onclick="display()">Click here</button>
+      <button type="button" onclick="console.log(event)">event</button>
+      <button id="btn" type="button" onclick="console.log(this)">event</button>
+      <button id="btn2">Click here</button>
+    </div>
+    <script>
+      function display() {
+        console.log('Button Clicked!')
+      }
+
+      let btn = document.getElementById("btn2");
+      btn.onclick = function(){
+        console.log(this.id);
+        console.log("button clicked")
+      }
+
+      //btn.onclick = null // remove event handler
+
+      /*addEventListner() - will register an event handler
+      removeEventListner() - will remove an event handler
+      */
+      addEventListener(event, function(){}/*, useCapture*/); //useCapture is optional it can be true or false it related to event bubbling and event capturing
+
+      btn.addEventListener('click', function(event) { //anonymous function
+        console.log(event.type);
+        console.log("Button clicked");
+      })
+
+      btn.addEventListener('click', display); //named function
+      btn.removeEventListener('click', display); //remove event that was added by addEventListener
+
+      /*mousemove - event fires repeatedly when you move the mouse cursor aroun the element
+      mousedown - event fires when you press the mouse button on the element
+      mouseup - event fires when you release the mouse button on the element
+      mouseover - event fires when the cursor move from outside to inside the boundaries of the element
+      mouseout - event fires when the cursor is over an element and the moves to another element
+      keydown  - event fires when you press a key on the keyboard and fires repeatedly while you're holding down the key
+      keyup - event fires when you release a key on the keyboard
+      keypress - event fires when you press a charchter on keyboard like a,b,c,.. it fires repeatedly whule you hold down the keybord
+      scroll - event fires when you scroll a document or an element the scroll event fire
+      */
+    </script>
+  </body>
+</html>

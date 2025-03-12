@@ -1,0 +1,72 @@
+<!--/**
+ * DOM -
+ * dom represent an HTML document as a tree of nodes
+ * 
+ * any node has relationship to other nodes in the DOM tree, and it is same as describe in the traditional family tree
+ */
+
+/**
+ * selecting method in dom
+ * 1) getElementById()
+ */-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Js</title>
+    <meta>
+    <script></script>
+  </head>
+  <body>
+
+    <div>
+      <p id="message">Javascript DOM</p>
+
+      <input type="radio" name="language" value="JS">
+      <input type="radio" name="language" value="Python">
+
+      <h1 class="message">first heading</h1>
+      <h1 class="message">second heading</h1>
+
+      <div id="container">
+        <h1 class="message">third heading</h1>
+        <h1 class="message">forth heading</h1>
+      </div>
+      
+
+    </div>
+
+    <script src="script.js">
+
+      let msg = document.getElementById("message");
+      console.log(msg);
+
+      let btn = document.getElementsByName("language");
+      console.log(btn);  //return list of node
+
+      /* the getElementByTagName() accepts a tag name and return a live HTMLCollecyion of elements*/
+      let heading = document.getElementsByTagName("h1");
+      console.log(heading); //collection of h1 nodes
+
+      /* getElementByClassNAme() returns an array-like of object of the child elements with a specified class name*/
+      let messages = document.getElementsByClassName("message");
+      console.log(messages); //collection of elements that contain message className
+
+      let cont = document.getElementById("container");
+      let messages2 = cont.getElementsByClassName("message");
+      console.log(messages2); //only return elements inside the container and has message className
+
+      /* querySelector() allows you to select the first element that matches one or more css selectors*/
+      let oneMsg = document.querySelector(".message");
+      console.log(oneMsg); //return only first matching element
+
+      let msgAll = document.querySelectorAll(".message");
+      console.log(msgAll);//return all elemtns
+
+      let msgAll2 = document.querySelectorAll("#container");
+      let msgAll3 = document.querySelectorAll("div");
+      let msgAll4 = document.querySelectorAll("div h1");
+      let msgAll5 = document.querySelectorAll("div, h1");
+    </script>
+  </body>
+</html>

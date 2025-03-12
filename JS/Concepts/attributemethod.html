@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #password {
+        background-color: lightpink;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="username"
+      placeholder="username"
+      style="background-color: lightblue; font-size: 20px"
+    />
+    <input type="text" id="password" placeholder="password" />
+
+    <h1 id="title" class="main message">Hello</h1>
+    <script>
+      let inputBox = document.getElementById("username");
+      console.log(inputBox.attributes);
+
+      console.log(inputBox.getAttribute("placeholder"));
+      inputBox.setAttribute("class", "user");
+      console.log(inputBox);
+
+      console.log(inputBox.hasAttribute("class")); //return true false
+
+      inputBox.removeAttribute("placeholder");
+
+      /*manupulating element style-
+       */
+      console.log(inputBox.style.backgroundColor); //red
+      inputBox.style.padding = "10px";
+
+      inputBox.style.cssText = "width: 200px"; //overide existing inline css
+      inputBox.style.cssText += "width: 200px; height: 100px"; //concatinate the style with exisitng style
+
+      window.getComputedStyle(element, pseudoElement);
+      console.log(window.getComputedStyle(inputBox).fontSize);
+
+      /*class name propert
+      return list of class 
+      */
+      let title = document.getElementById("title");
+      title.className = "new"; //add new class by overidining the previous one
+      title.className += "new"; //add new class by concatinating without removing previos classes
+      console.log(title);
+
+      /*class list return collection of classes
+       */
+      title.classList.add("new", "new2"); //add new class or classesname to previous class list
+      title.classList.remove("new", "main"); //remove class or classes
+      title.classList.replace("message", "msg"); //replace with new name
+      title.classList.contains("message"); //return true or false if it availabe or not
+      title.classList.toggle("new3"); //if the class is available then remove it otherwise the classe is add
+
+      console.log(title.classList);
+    </script>
+  </body>
+</html>
